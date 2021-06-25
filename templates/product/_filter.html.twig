@@ -1,0 +1,14 @@
+<div class="text-center col m-5">
+    <div class="m-2">{{ form_start(form)}}</div>
+    <div class="m-2">{{form_row(form.q)}}</div>
+
+
+    <div class="badge badge-info">{{form_row(form.categories)}}</div>
+    <div class="m-2">{{form_row(form.min) }}</div>
+    <div class="m-2">{{form_row(form.max) }} </div>
+    <button type="submit" class="btn btn-primary m-2">
+        Soumettre
+    </button>
+</div>
+
+{{ form_end(form)}}

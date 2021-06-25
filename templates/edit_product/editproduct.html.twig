@@ -1,0 +1,36 @@
+{% block body %}
+
+</style>
+{% include "header.html.twig" %}
+<div class="container text-center bg-light mb-5 rounded p-3">
+    <h3>Modification du plat :</h3>
+    {{ form_start(editprodForm)}}
+
+    <div class="form-group">
+        <Label> Titre du Plat</Label>
+        {{ form_widget(editprodForm.name)}}
+    </div>
+    <div class="form-group">
+        <Label> Prix du Plat</Label>
+        {{ form_widget(editprodForm.price)}}
+    </div>
+    <div class="form-group">
+        <Label> Description du Plat</Label>
+        {{ form_widget(editprodForm.description)}}
+    </div>
+    <div class="form-group">
+        <Label> Image du Plat</Label>
+        {{ form_widget(editprodForm.imageFile)}}
+    </div>
+    <div class="form-group">
+        <Label> Quantité du Plat</Label>
+        {{ form_widget(editprodForm.quantity)}}
+    </div>
+
+    {{ form(editprodForm)}}
+</div>
+{% endblock %}
+
+</body>
+
+</html>

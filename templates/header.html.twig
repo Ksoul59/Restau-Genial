@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    {% block head %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Restau-Genial </title>
+    <meta name="description" content="Description of the page less than 150 characters">
+
+    <!-- FavIcon -->
+    <link rel="icon" type="image/png" href="./images/ui/favicon.png">
+
+    <!-- StyleSheets -->
+    <!-- <link rel="stylesheet" href="./styles/reset.css" /> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+
+    <!-- Custom StyleSheets -->
+    <link rel="stylesheet" href="{{ asset('./styles/app.scss') }}">
+
+    {% endblock head %}
+    <style>
+        body {
+            background-image: url(/images/products/salle.jpg) !important;
+
+            /* Fixe l'image */
+            background-attachment: fixed;
+
+            /* Centre l'image (verticalement et horizontalement) */
+            background-position: center;
+
+            /* Permet au motif de ne pas se répéter */
+            background-repeat: no-repeat;
+
+            /* Permet a l'image de remplir l'ecran, s'adapter aux dimensions de l'ecran en conservant le ratio */
+            background-size: cover;
+
+        }
+
+        nav {
+            backdrop-filter: blur(3px);
+        }
+    </style>
+</head>
+
+<body class="">
+    {% block body %}
+    <header class=" ">
+        <div>
+
+            <header id="main-header" class="main-header">
+                <div class="">
+
+
+                    <nav id="nav" class="navbar d-flex justify-content-center mb-2">
+                        <div class="navbar-collapse" id="main-nav"></div>
+
+                        <ul class="navbar-nav ">
+                            <div class="row align-self-center">
+
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <li class="nav-item m-1">
+                                    <a class="nav-link btn btn-warning" href="{{ path('admin_utilisateurs') }}">Gestion
+                                        Administrateur</a>
+                                </li>
+                                {% endif %}
+                                {% if is_granted('ROLE_MANAGER') %}
+                                <li>
+                                    <a class="nav-item mr-5 btn btn-warning" href="{{ path('new_product') }}"> Création
+                                        de Plats</a>
+                                </li>
+                                {% endif %}
+                                <div class="row"></div>
+
+                            </div>
+
+                        </ul>
+                        <!-- Logo -->
+                        <a class="navbar-brand" href="#">
+                            <img src="/images/products/Restau-Genial.png" alt="image" class="img-fluid"
+                                style="max-width:400px ;">
+                        </a>
+                        <ul class="navbar-nav ">
+                            <div class="row align-self-center">
+
+                                <li>
+                                    <a class="mr-2 btn btn-warning" href="{{ path('app_home') }}">Accueil</a>
+                                </li>
+
+                                <li>
+                                    {% if is_granted('ROLE_USER') %}
+                                    <a class="mr-2 btn btn-warning" href="{{ path('cart_index') }}">Panier</a>
+                                    {% endif %}
+                                </li>
+
+
+                                {% if is_granted('ROLE_USER') %}
+                                <li class="">
+                                    <a class="nav-link mr-2 btn btn-warning" href="{{ path('app_logout') }}">Se
+                                        déconnecter</a>
+                                </li>
+                                {% else %}
+                                <li class=""></li>
+                                <a class="nav-link mr-2 btn btn-warning" href="{{ path('app_login') }}">Se
+                                    connecter</a>
+                                </li>
+                                {% endif %}
+
+                            </div>
+                        </ul>
+                </div>
+        </div>
+        </nav>
+    </header>
+    {% endblock body %}

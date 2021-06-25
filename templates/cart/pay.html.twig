@@ -1,0 +1,46 @@
+{% block body %}
+<div class="container">
+    <br><br>
+    <div class="text-center">
+        <h2>MONTANT A PAYER :</h2>
+        <h2> {{ total }} €</h2>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col s12 m4 l4 offset-m4 offset-l4 text-center">
+            <form id="payment-form" method="post">
+
+                <div class="form-row" id="card-element">
+                    <label class="mr-5">
+                        <span>Numéro carte</span>
+                        <input data-stripe="number" size="16" type="text">
+                    </label>
+
+
+                    <label class="mr-5">
+                        <span>Expire en (MM/YY)</span>
+                        <input data-stripe="exp_month" size="2" type="text">
+                    </label>
+                    <span class="mr-5 h2">
+                        /
+                    </span>
+                    <input data-stripe="exp_year" size="4" type="text">
+
+                    <label class="mr-5">
+                        <span>CVC</span>
+                        <input data-stripe="cvc" size="3" type="text">
+                    </label>
+                    <a href="" class="btn btn-success">VALIDER COMMANDE</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+<script src="https://js.stripe.com/v3/" type="text/javascript"></script>
+
+<script>
+    var stripe = Stripe('pk_test_***************');
+</script>
+{% endblock %}

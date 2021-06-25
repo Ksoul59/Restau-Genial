@@ -1,0 +1,41 @@
+{% block body %}
+
+{% include "header.html.twig" %}
+<div class="text-center bg-light container rounded">
+    <h1> Liste des User</h1>
+    <table class="table">
+        <thead>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Rôles</th>
+            <th>Action</th>
+
+
+        </thead>
+        {% for users in user %}
+        <tbody>
+
+            <td>{{ users.id }}</td>
+            <td>{{ users.email }}</td>
+            <td>{% for role in users.roles %}
+                {% if role == "ROLE_USER" %}
+                <span class="badge badge-info">USER</span>
+                {% elseif role == "ROLE_MANAGER" %}
+                <span class="badge badge-info">MANAGER</span>
+                {% elseif role == "ROLE_ADMIN" %}
+                <span class="badge badge-info">ADMIN</span>
+                {% endif %}
+                {% endfor %}</td>
+            <td><a href="{{ path('admin_modifier_users', {"id":users.id }) }}" class="btn text-primary"> <i
+                        class="fas fa-toolbox"></i> Modifier</a></td>
+            {% else %}
+            <tr> Aucun user</tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+</body>
+
+</html>

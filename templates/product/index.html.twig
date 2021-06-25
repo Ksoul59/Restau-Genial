@@ -1,0 +1,23 @@
+{% block head %}
+
+{% include "header.html.twig" %}
+{% include "product/_filter.html.twig" %}
+{% endblock head %}
+
+
+{% block body %}
+<div class="d-flex justify-content-around card-group">
+    {% include "product/_card.html.twig" %}
+</div>
+{% endblock %}
+{% include "footer.html.twig" %}
+
+<div class=" d-flex justify-content-center mb-5">
+
+    {{ knp_pagination_render( product ) }}
+
+
+</div>
+</body>
+
+</html>

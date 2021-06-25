@@ -1,0 +1,38 @@
+{% for item in product %}
+<article class="">
+    <div class="row mb-3">
+        <div style="width: 350px;">
+            <img class="img-fluid" src="{{ vich_uploader_asset(item, 'imageFile') }}" alt="...">
+        </div>
+        <div class="text-center">
+            <div class=" bg-light rounded align-middle " style="width: 350px;">
+                <div>
+                    <h3 class="card-title text-center text-warning">{{ item.name }}</h3>
+                    <p class="card-title text-center mt-2 text-danger">{{ item.description }}
+                    </p>
+                    {% for c in item.categories %}
+                    <span class="badge badge-info text-center">#{{c.name}}</span>
+                    {% endfor %}
+                </div>
+                <div>
+                    <h3 class="card-title text-center">{{ item.price }} €</h3>
+                </div>
+                <div class="">
+                    {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('cart_add', {'id': item.id }) }}" type="button"><i class="fas fa-cart-plus"></i>
+                        COMMANDER</a>
+                    {% endif %}
+                    {% if is_granted('ROLE_MANAGER') %}
+                    <a href="{{ path('modifier_product', {'id': item.id }) }}" type="button"><i
+                            class="fas fa-wrench"></i>
+                        MODIFIER</a>
+                    <a href="{{ path('delete_product', {'id': item.id }) }}" type="button"><i
+                            class="fas fa-trash-alt"></i>
+                        SUPPRIMER</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+{% endfor %}

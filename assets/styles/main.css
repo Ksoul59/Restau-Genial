@@ -1,0 +1,51 @@
+/* =========================================================================
+ * BASE
+ * ========================================================================= */
+
+/* HTML
+ * ------------------------------------------------------------------------- */
+
+html {
+  height: 100%;
+}
+
+/* BODY
+ * ------------------------------------------------------------------------- */
+
+body {
+  display: flex;
+
+  margin: 0;
+
+  min-width: var(--dom--min-width);
+  min-height: 100%;
+
+  flex-direction: column;
+
+  font-family: sans-serif;
+}
+
+/* =========================================================================
+ * MY CUSTOM STYLE
+ * ========================================================================= */
+
+.example-collection {
+  margin: auto;
+  align-items: center;
+}
+
+.example-collection > .collection__item:not(:first-child) {
+  margin-top: var(--offset--medium);
+}
+
+.brand-logo {
+  width: 128px;
+}
+
+.page-title {
+  color: var(--color--dark-grey);
+}
+
+.font-awesome-example {
+  color: var(--color--black);
+}
